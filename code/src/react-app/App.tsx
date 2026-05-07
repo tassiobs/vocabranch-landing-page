@@ -3,7 +3,7 @@ import HomePage from "@/react-app/pages/Home";
 
 export default function App() {
   return (
-    <Router basename="/vocabranch-landing-page/">
+    <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
