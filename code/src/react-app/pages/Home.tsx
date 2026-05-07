@@ -1,0 +1,26 @@
+import { useEffect } from "react";
+import Hero from "@/react-app/components/landing/Hero";
+import Problem from "@/react-app/components/landing/Problem";
+import HowItWorks from "@/react-app/components/landing/HowItWorks";
+import Differentiators from "@/react-app/components/landing/Differentiators";
+import Footer from "@/react-app/components/landing/Footer";
+
+export default function Home() {
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href = "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&display=swap";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+    return () => { document.head.removeChild(link); };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      <Hero />
+      <Problem />
+      <HowItWorks />
+      <Differentiators />
+      <Footer />
+    </div>
+  );
+}
