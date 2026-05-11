@@ -25,7 +25,7 @@ export default function Problem() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-2xl mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4" style={{ fontFamily: '"Source Serif 4", serif' }}>
-            Advanced learners have no good tool
+            Ambitious learners have no good tool
           </h2>
           <p className="text-lg text-muted-foreground">
             You've put in the work. You're fluent enough for meetings, emails, maybe even jokes. 

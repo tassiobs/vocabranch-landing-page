@@ -37,7 +37,7 @@ export default function Differentiators() {
             What makes VocaBranch different
           </h2>
           <p className="text-lg text-background/70 max-w-2xl mx-auto">
-            Built specifically for advanced learners who demand more than beginner tools can offer.
+            Built specifically for ambitious learners who demand more than beginner tools can offer.
           </p>
         </div>
 
