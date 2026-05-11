@@ -21,10 +21,10 @@ export default function Footer() {
     setError(null);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/waitlist`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, first_name: firstName, last_name: lastName }),
+        body: JSON.stringify({ email, first_name: firstName, last_name: lastName, waitlist: true }),
       });
 
       if (!res.ok) {
