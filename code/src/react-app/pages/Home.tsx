@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Nav from "@/react-app/components/landing/Nav";
 import Hero from "@/react-app/components/landing/Hero";
 import Problem from "@/react-app/components/landing/Problem";
 import HowItWorks from "@/react-app/components/landing/HowItWorks";
@@ -16,11 +17,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Nav />
+      <div className="pt-14">
       <Hero />
       <Problem />
       <HowItWorks />
       <Differentiators />
       <Footer />
+      </div>
     </div>
   );
 }
