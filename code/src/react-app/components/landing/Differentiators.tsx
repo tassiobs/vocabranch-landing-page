@@ -19,7 +19,7 @@ const differentiators = [
   {
     icon: LineChart,
     title: "Honest mastery tracking",
-    description: "Spaced repetition based on actual performance, with analytics that tell the truth."
+    description: "Track which words you've truly mastered, with analytics that tell the truth."
   },
   {
     icon: Users2,

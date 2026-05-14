@@ -26,7 +26,7 @@ const steps = [
     number: "04",
     icon: Brain,
     title: "Track mastery over time",
-    description: "Spaced repetition adapts to your actual knowledge. Review analytics show what you've truly mastered — not just what you clicked \"know\" on.",
+    description: "Track mastery based on how you actually perform. Review analytics show what you've truly learned — not just what you clicked \"know\" on.",
     accent: "Real progress, measured honestly"
   },
   {
