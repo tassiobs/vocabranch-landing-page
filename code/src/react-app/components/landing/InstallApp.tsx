@@ -1,4 +1,14 @@
-import { Share2, MoreVertical, Smartphone, PlusSquare } from "lucide-react";
+import { MoreVertical, Smartphone, PlusSquare } from "lucide-react";
+
+function IosShareIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="8 6 12 2 16 6" />
+      <line x1="12" y1="2" x2="12" y2="15" />
+      <path d="M20 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4" />
+    </svg>
+  );
+}
 
 const iosSteps = [
   {
@@ -6,7 +16,7 @@ const iosSteps = [
     instruction: "Open the app in Safari",
   },
   {
-    icon: Share2,
+    icon: IosShareIcon,
     instruction: 'Tap the Share button — the square with an arrow pointing up',
   },
   {
