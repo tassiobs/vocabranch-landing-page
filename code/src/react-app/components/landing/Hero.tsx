@@ -73,7 +73,7 @@ export default function Hero() {
             and actual mastery tracking.
           </p>
 
-          {/* Waitlist form */}
+          {/* Request Access form */}
           {!submitted ? (
             <div className="max-w-md">
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -114,7 +114,7 @@ export default function Hero() {
                       <Loader2 className="w-4 h-4 animate-spin" />
                     ) : (
                       <>
-                        Join waitlist
+                        Request Access
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </>
                     )}
@@ -124,7 +124,7 @@ export default function Hero() {
               {error && (
                 <p className="text-sm text-destructive mt-2">{error}</p>
               )}
-              <p className="text-sm text-muted-foreground mt-4">Be among the first to get access</p>
+              <p className="text-sm text-muted-foreground mt-4">Request your spot — we review applications and reach out directly.</p>
               <p className="text-sm text-muted-foreground mt-1">Free during the pilot period. No credit card required.</p>
             </div>
           ) : (

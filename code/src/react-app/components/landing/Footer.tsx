@@ -52,7 +52,7 @@ export default function Footer() {
           <span className="text-primary"> for real?</span>
         </h2>
         <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
-          Join the waitlist for early access. We're building VocaBranch for learners who are serious about fluency.
+          Request access and we'll reach out directly. We're building VocaBranch for learners who are serious about fluency.
         </p>
 
         {!submitted ? (
@@ -95,7 +95,7 @@ export default function Footer() {
                     <Loader2 className="w-4 h-4 animate-spin" />
                   ) : (
                     <>
-                      Join waitlist
+                      Request Access
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </>
                   )}
