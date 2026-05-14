@@ -68,7 +68,7 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10">
-            The vocabulary app for busy professionals who've outgrown Duolingo.
+            The vocabulary app for serious learners who've outgrown Duolingo.
             AI-generated word trees, active practice, real-world context —
             and actual mastery tracking.
           </p>
