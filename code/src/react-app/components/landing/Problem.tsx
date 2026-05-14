@@ -21,7 +21,7 @@ const problems = [
 
 export default function Problem() {
   return (
-    <section className="py-24 md:py-32 bg-muted/30">
+    <section id="problem" className="py-24 md:py-32 bg-muted/30 scroll-mt-14">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-2xl mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4" style={{ fontFamily: '"Source Serif 4", serif' }}>

@@ -42,7 +42,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-24 md:py-32 relative overflow-hidden">
+    <footer id="waitlist" className="py-24 md:py-32 relative overflow-hidden scroll-mt-14">
       {/* Subtle background accent */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
 

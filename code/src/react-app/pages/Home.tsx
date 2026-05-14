@@ -3,6 +3,7 @@ import Nav from "@/react-app/components/landing/Nav";
 import Hero from "@/react-app/components/landing/Hero";
 import Problem from "@/react-app/components/landing/Problem";
 import HowItWorks from "@/react-app/components/landing/HowItWorks";
+import InstallApp from "@/react-app/components/landing/InstallApp";
 import Differentiators from "@/react-app/components/landing/Differentiators";
 import Footer from "@/react-app/components/landing/Footer";
 
@@ -15,6 +16,16 @@ export default function Home() {
     return () => { document.head.removeChild(link); };
   }, []);
 
+  useEffect(() => {
+    const { hash } = window.location;
+    if (!hash) return;
+    // Small delay to let React finish rendering before scrolling
+    const id = setTimeout(() => {
+      document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(id);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Nav />
@@ -22,6 +33,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <HowItWorks />
+      <InstallApp />
       <Differentiators />
       <Footer />
       </div>
