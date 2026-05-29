@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Nav from "@/react-app/components/landing/Nav";
 import Hero from "@/react-app/components/landing/Hero";
+import ProductExperience from "@/react-app/components/landing/ProductExperience";
 import Problem from "@/react-app/components/landing/Problem";
 import HowItWorks from "@/react-app/components/landing/HowItWorks";
 import InstallApp from "@/react-app/components/landing/InstallApp";
@@ -31,6 +32,7 @@ export default function Home() {
       <Nav />
       <div className="pt-14">
       <Hero />
+      <ProductExperience />
       <Problem />
       <HowItWorks />
       <InstallApp />
