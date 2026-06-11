@@ -69,7 +69,7 @@ export default function ProductExperience() {
             },
             {
               title: "Designed for serious learners",
-              body: "Not a beginner app. Built for intermediate-to-advanced learners who want precision.",
+              body: "Whether you're building your first academic vocabulary or pushing toward fluency, VocaBranch gives you the precision to go further.",
             },
           ].map((item) => (
             <div
