@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Loader2, ArrowLeft, BookOpen } from "lucide-react";
 import { Button } from "@/react-app/components/ui/button";
+import Seo from "@/react-app/components/Seo";
 import { blogApi, type Post } from "@/react-app/lib/blogApi";
 
 function formatDate(iso: string) {
@@ -32,6 +33,11 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Seo
+        title="Blog"
+        description="Tips, research, and stories about vocabulary learning from the VocaBranch team."
+        canonical="/blog"
+      />
       {/* Nav */}
       <header className="fixed top-0 inset-x-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">

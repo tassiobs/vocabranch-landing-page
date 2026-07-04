@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Seo from "@/react-app/components/Seo";
 import Nav from "@/react-app/components/landing/Nav";
 import Hero from "@/react-app/components/landing/Hero";
 import ProductExperience from "@/react-app/components/landing/ProductExperience";
@@ -30,6 +31,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Seo canonical="/" />
       <Nav />
       <div className="pt-14">
       <Hero />

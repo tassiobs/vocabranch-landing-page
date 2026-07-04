@@ -4,7 +4,13 @@ import { Loader2, ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Button } from "@/react-app/components/ui/button";
+import Seo from "@/react-app/components/Seo";
 import { blogApi, type Post } from "@/react-app/lib/blogApi";
+
+function postExcerpt(body: string, max = 155) {
+  const plain = body.replace(/[#*`_~[\]>-]/g, "").trim();
+  return plain.length > max ? plain.slice(0, max).trimEnd() + "…" : plain;
+}
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -22,6 +28,15 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      {post && (
+        <Seo
+          title={post.title}
+          description={postExcerpt(post.body)}
+          canonical={`/blog/${post.slug}`}
+          type="article"
+          publishedAt={post.created_at}
+        />
+      )}
       <header className="fixed top-0 inset-x-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -79,6 +94,20 @@ export default function BlogPost() {
 
               <div className="prose prose-neutral max-w-none prose-headings:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-code:text-primary prose-code:bg-primary/5 prose-code:rounded prose-code:px-1">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
+              </div>
+
+              <div className="mt-12 border-t border-border/60 pt-8">
+                <p className="text-muted-foreground leading-relaxed">
+                  Want to actually remember this expression? Add it to your{" "}
+                  <a
+                    href="https://app.vocabranch.com/"
+                    className="text-primary font-medium hover:underline"
+                  >
+                    Vocabranch vocabulary
+                  </a>{" "}
+                  and practice it with personalized exercises, example sentences, and AI-powered
+                  speaking and writing feedback until it becomes part of your everyday English.
+                </p>
               </div>
             </article>
           )}
