@@ -6,6 +6,7 @@ import Problem from "@/react-app/components/landing/Problem";
 import HowItWorks from "@/react-app/components/landing/HowItWorks";
 import InstallApp from "@/react-app/components/landing/InstallApp";
 import Differentiators from "@/react-app/components/landing/Differentiators";
+import BlogPreview from "@/react-app/components/landing/BlogPreview";
 import Footer from "@/react-app/components/landing/Footer";
 
 export default function Home() {
@@ -37,6 +38,7 @@ export default function Home() {
       <HowItWorks />
       <InstallApp />
       <Differentiators />
+      <BlogPreview />
       <Footer />
       </div>
     </div>
