@@ -105,7 +105,7 @@ export default function BlogPost() {
                   >
                     Vocabranch vocabulary
                   </a>{" "}
-                  and practice it with personalized exercises, example sentences, and AI-powered
+                  and practice it with personalized review sessions, realistic example sentences, and AI-powered
                   speaking and writing feedback until it becomes part of your everyday English.
                 </p>
               </div>
