@@ -10,6 +10,7 @@ import AdminSignUp from "@/react-app/pages/admin/SignUp";
 import AdminPosts from "@/react-app/pages/admin/Posts";
 import PostEditor from "@/react-app/pages/admin/PostEditor";
 import PostPreview from "@/react-app/pages/admin/PostPreview";
+import NotFound from "@/react-app/pages/NotFound";
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
             path="/admin/posts/:id/preview"
             element={<ProtectedRoute><PostPreview /></ProtectedRoute>}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </AuthProvider>
