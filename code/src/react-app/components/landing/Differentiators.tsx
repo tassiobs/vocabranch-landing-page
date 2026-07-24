@@ -1,4 +1,4 @@
-import { Zap, PenTool, Video, LineChart, Users2 } from "lucide-react";
+import { Zap, PenTool, Video, LineChart } from "lucide-react";
 
 const differentiators = [
   {
@@ -20,11 +20,6 @@ const differentiators = [
     icon: LineChart,
     title: "Honest mastery tracking",
     description: "Track which words you've truly mastered, with analytics that tell the truth."
-  },
-  {
-    icon: Users2,
-    title: "Collaborative workspaces",
-    description: "Share collections with teammates or study groups. Learn together."
   }
 ];
 
@@ -41,11 +36,11 @@ export default function Differentiators() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {differentiators.map((diff, index) => (
-            <div 
+            <div
               key={index}
-              className={`p-6 rounded-xl border border-background/10 hover:border-primary/50 bg-background/5 hover:bg-background/10 transition-all ${index === 4 ? 'lg:col-span-1 md:col-span-2 lg:mx-auto lg:max-w-sm' : ''}`}
+              className="p-6 rounded-xl border border-background/10 hover:border-primary/50 bg-background/5 hover:bg-background/10 transition-all"
             >
               <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
                 <diff.icon className="w-5 h-5 text-primary" />
