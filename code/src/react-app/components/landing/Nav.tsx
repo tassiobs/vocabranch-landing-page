@@ -20,7 +20,7 @@ export default function Nav() {
             <a href="https://app.vocabranch.com">Log in</a>
           </Button>
           <Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            <a href="https://app.vocabranch.com/">Sign up</a>
+            <a href="https://app.vocabranch.com/signup">Sign up</a>
           </Button>
         </div>
       </div>

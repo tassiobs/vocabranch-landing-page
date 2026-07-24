@@ -35,7 +35,7 @@ export default function Hero() {
           </p>
 
           <Button asChild size="lg" className="h-12 px-8 bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
-            <a href="https://app.vocabranch.com/">
+            <a href="https://app.vocabranch.com/signup">
               Get started free
               <ArrowRight className="w-4 h-4 ml-2" />
             </a>
