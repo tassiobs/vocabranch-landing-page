@@ -18,6 +18,8 @@ function firstImage(body: string): string | null {
   return match ? match[1] : null;
 }
 
+const METADATA_RE = /pronunciation|part of speech|:\s*(noun|verb|adjective|adverb|proverb|idiom)|meaning,\s*examples|synonyms\s*&|\/[a-zðæəɪʊɛɔɑɒʌɜɐɨɯɵɤɥʏʉɓɗɠɬɮɸβθʃʒɕʑʂʐçʝɣχʁħʕɦʋɹɻjɰlɭʎʟmɱnɳɲŋɴʙrʀⱱɾɽʔˈˌː]+\//i;
+
 function excerpt(body: string, max = 160) {
   for (const line of body.split("\n")) {
     const clean = line
@@ -25,7 +27,7 @@ function excerpt(body: string, max = 160) {
       .replace(/^#{1,6}\s+/, "")
       .replace(/[*`_~[\]>-]/g, "")
       .trim();
-    if (clean.length >= 60) {
+    if (clean.length >= 60 && !METADATA_RE.test(clean)) {
       return clean.length > max ? clean.slice(0, max).trimEnd() + "…" : clean;
     }
   }
