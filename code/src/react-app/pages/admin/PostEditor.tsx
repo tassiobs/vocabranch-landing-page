@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router";
-import { Loader2, ArrowLeft, Eye, EyeOff, Link2 } from "lucide-react";
+import { Loader2, ArrowLeft, Eye, EyeOff, Link2, ImageIcon } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Button } from "@/react-app/components/ui/button";
@@ -20,7 +20,10 @@ export default function PostEditor() {
   const [error, setError] = useState<string | null>(null);
   const [slugError, setSlugError] = useState<string | null>(null);
   const [preview, setPreview] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const slugManuallyEdited = useRef(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!isEdit) return;
@@ -83,6 +86,35 @@ export default function PostEditor() {
     }
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    e.target.value = "";
+    setUploading(true);
+    setError(null);
+    try {
+      const url = await blogApi.uploadImage(file);
+      const markdown = `![image](${url})`;
+      const ta = textareaRef.current;
+      if (ta) {
+        const start = ta.selectionStart ?? body.length;
+        const end = ta.selectionEnd ?? body.length;
+        const next = body.slice(0, start) + markdown + body.slice(end);
+        setBody(next);
+        requestAnimationFrame(() => {
+          ta.selectionStart = ta.selectionEnd = start + markdown.length;
+          ta.focus();
+        });
+      } else {
+        setBody((b) => b + "\n" + markdown);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Image upload failed.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -107,6 +139,26 @@ export default function PostEditor() {
             </span>
           </div>
           <div className="flex items-center gap-2">
+            {!preview && (
+              <>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  disabled={uploading}
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />}
+                  Image
+                </Button>
+              </>
+            )}
             <Button variant="ghost" size="sm" onClick={() => setPreview((v) => !v)}>
               {preview ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               {preview ? "Editor" : "Preview"}
@@ -156,6 +208,7 @@ export default function PostEditor() {
           </div>
         ) : (
           <textarea
+            ref={textareaRef}
             placeholder="Write your post in Markdown…"
             value={body}
             onChange={(e) => setBody(e.target.value)}

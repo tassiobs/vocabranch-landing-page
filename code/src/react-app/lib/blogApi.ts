@@ -77,6 +77,23 @@ export const blogApi = {
 
   publishPost: (id: number) =>
     request<Post>(`/posts/${id}/publish`, { method: "POST" }),
+
+  uploadImage: async (file: File): Promise<string> => {
+    const token = getToken();
+    const form = new FormData();
+    form.append("file", file);
+    const res = await fetch(`${BASE}/uploads/image`, {
+      method: "POST",
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      body: form,
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => null);
+      throw new Error(data?.detail ?? `Upload failed: ${res.status}`);
+    }
+    const { url } = await res.json();
+    return url;
+  },
 };
 
 export function slugify(title: string): string {
