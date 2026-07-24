@@ -19,10 +19,17 @@ function firstImage(body: string): string | null {
 }
 
 function excerpt(body: string, max = 160) {
-  const plain = body
-    .replace(/!\[.*?\]\(.*?\)/g, "")
-    .replace(/[#*`_~[\]>-]/g, "")
-    .trim();
+  for (const line of body.split("\n")) {
+    const clean = line
+      .replace(/!\[.*?\]\(.*?\)/g, "")
+      .replace(/^#{1,6}\s+/, "")
+      .replace(/[*`_~[\]>-]/g, "")
+      .trim();
+    if (clean.length >= 60) {
+      return clean.length > max ? clean.slice(0, max).trimEnd() + "…" : clean;
+    }
+  }
+  const plain = body.replace(/!\[.*?\]\(.*?\)/g, "").replace(/[#*`_~[\]>-]/g, "").trim();
   return plain.length > max ? plain.slice(0, max).trimEnd() + "…" : plain;
 }
 
@@ -110,32 +117,30 @@ export default function Blog() {
               {posts.map((post) => {
                 const thumb = firstImage(post.body);
                 return (
-                  <article key={post.id} className="py-8 first:pt-0 flex gap-6 items-start">
-                    <div className="flex-1 min-w-0">
-                      <time className="text-sm text-muted-foreground">{formatDate(post.created_at)}</time>
-                      <h2
-                        className="text-xl font-semibold mt-1.5 mb-2 hover:text-primary transition-colors"
-                        style={{ fontFamily: '"Source Serif 4", serif' }}
-                      >
-                        <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                      </h2>
-                      <p className="text-muted-foreground leading-relaxed">{excerpt(post.body)}</p>
-                      <Link
-                        to={`/blog/${post.slug}`}
-                        className="inline-block mt-3 text-sm text-primary hover:underline font-medium"
-                      >
-                        Read more →
-                      </Link>
-                    </div>
+                  <article key={post.id} className="py-8 first:pt-0">
                     {thumb && (
-                      <Link to={`/blog/${post.slug}`} className="shrink-0">
+                      <Link to={`/blog/${post.slug}`}>
                         <img
                           src={thumb}
                           alt=""
-                          className="w-24 h-24 object-cover rounded-lg border border-border/40"
+                          className="w-full h-56 object-cover rounded-xl mb-5 border border-border/40"
                         />
                       </Link>
                     )}
+                    <time className="text-sm text-muted-foreground">{formatDate(post.created_at)}</time>
+                    <h2
+                      className="text-xl font-semibold mt-1.5 mb-2 hover:text-primary transition-colors"
+                      style={{ fontFamily: '"Source Serif 4", serif' }}
+                    >
+                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed">{excerpt(post.body)}</p>
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="inline-block mt-3 text-sm text-primary hover:underline font-medium"
+                    >
+                      Read more →
+                    </Link>
                   </article>
                 );
               })}

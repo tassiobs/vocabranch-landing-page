@@ -10,10 +10,17 @@ function firstImage(body: string): string | null {
 }
 
 function excerpt(body: string, max = 120) {
-  const plain = body
-    .replace(/!\[.*?\]\(.*?\)/g, "")
-    .replace(/[#*`_~[\]>-]/g, "")
-    .trim();
+  for (const line of body.split("\n")) {
+    const clean = line
+      .replace(/!\[.*?\]\(.*?\)/g, "")
+      .replace(/^#{1,6}\s+/, "")
+      .replace(/[*`_~[\]>-]/g, "")
+      .trim();
+    if (clean.length >= 60) {
+      return clean.length > max ? clean.slice(0, max).trimEnd() + "…" : clean;
+    }
+  }
+  const plain = body.replace(/!\[.*?\]\(.*?\)/g, "").replace(/[#*`_~[\]>-]/g, "").trim();
   return plain.length > max ? plain.slice(0, max).trimEnd() + "…" : plain;
 }
 
