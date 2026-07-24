@@ -4,8 +4,16 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "@/react-app/components/ui/button";
 import { blogApi, type Post } from "@/react-app/lib/blogApi";
 
+function firstImage(body: string): string | null {
+  const match = body.match(/!\[.*?\]\((.*?)\)/);
+  return match ? match[1] : null;
+}
+
 function excerpt(body: string, max = 120) {
-  const plain = body.replace(/[#*`_~[\]>-]/g, "").trim();
+  const plain = body
+    .replace(/!\[.*?\]\(.*?\)/g, "")
+    .replace(/[#*`_~[\]>-]/g, "")
+    .trim();
   return plain.length > max ? plain.slice(0, max).trimEnd() + "…" : plain;
 }
 
@@ -48,12 +56,22 @@ export default function BlogPreview() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {posts.map((post) => (
+          {posts.map((post) => {
+            const thumb = firstImage(post.body);
+            return (
             <Link
               key={post.id}
               to={`/blog/${post.slug}`}
-              className="group border border-border/60 rounded-2xl p-6 bg-card hover:border-primary/40 hover:shadow-sm transition-all"
+              className="group border border-border/60 rounded-2xl overflow-hidden bg-card hover:border-primary/40 hover:shadow-sm transition-all"
             >
+              {thumb && (
+                <img
+                  src={thumb}
+                  alt=""
+                  className="w-full h-40 object-cover"
+                />
+              )}
+              <div className="p-6">
               <time className="text-xs text-muted-foreground">
                 {new Date(post.created_at).toLocaleDateString("en-US", {
                   month: "short",
@@ -73,8 +91,10 @@ export default function BlogPreview() {
               <span className="inline-flex items-center gap-1 mt-4 text-xs font-medium text-primary group-hover:gap-2 transition-all">
                 Read more <ArrowRight className="w-3 h-3" />
               </span>
+              </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-8 flex md:hidden">
