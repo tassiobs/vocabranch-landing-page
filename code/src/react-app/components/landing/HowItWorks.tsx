@@ -1,4 +1,4 @@
-import { Sparkles, BookOpen, Play, Brain, Users } from "lucide-react";
+import { Sparkles, BookOpen, Play, Brain } from "lucide-react";
 
 const steps = [
   {
@@ -29,13 +29,6 @@ const steps = [
     description: "Track mastery based on how you actually perform. Review analytics show what you've truly learned — not just what you clicked \"know\" on.",
     accent: "Real progress, measured honestly"
   },
-  {
-    number: "05",
-    icon: Users,
-    title: "Share with your team",
-    description: "Collaborative workspaces let you share vocabulary collections with teammates, study partners, or entire language learning groups.",
-    accent: "Learn together, grow faster"
-  }
 ];
 
 export default function HowItWorks() {

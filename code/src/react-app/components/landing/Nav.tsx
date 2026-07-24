@@ -19,6 +19,9 @@ export default function Nav() {
           <Button asChild variant="outline" size="sm" className="border-primary/40 text-primary hover:bg-primary/10 hover:border-primary">
             <a href="https://app.vocabranch.com">Log in</a>
           </Button>
+          <Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            <a href="https://app.vocabranch.com/">Sign up</a>
+          </Button>
         </div>
       </div>
     </header>
