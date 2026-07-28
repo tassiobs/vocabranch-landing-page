@@ -32,7 +32,7 @@ export default function BlogPreview() {
   useEffect(() => {
     blogApi
       .getPublished()
-      .then((data) => setPosts(data.slice(0, 3)))
+      .then((data) => setPosts(data.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).slice(0, 3)))
       .catch(() => {});
   }, []);
 

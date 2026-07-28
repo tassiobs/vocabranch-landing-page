@@ -43,7 +43,7 @@ export default function Blog() {
   useEffect(() => {
     blogApi
       .getPublished()
-      .then(setPosts)
+      .then((data) => setPosts(data.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())))
       .catch((err) => setError(err instanceof Error ? err.message : "Failed to load posts."))
       .finally(() => setLoading(false));
   }, []);
