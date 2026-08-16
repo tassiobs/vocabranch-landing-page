@@ -18,7 +18,7 @@ export default function Hero() {
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            For ambitious English learners
+            Your lifelong English vocabulary companion.
           </div>
 
           {/* Headline */}
