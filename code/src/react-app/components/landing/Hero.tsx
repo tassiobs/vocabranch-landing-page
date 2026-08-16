@@ -18,13 +18,13 @@ export default function Hero() {
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Your lifelong English vocabulary companion.
+            For ambitious English learners
           </div>
 
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1] mb-6" style={{ fontFamily: '"Source Serif 4", serif' }}>
-            Master vocabulary at the level
-            <span className="text-primary"> you actually need</span>
+            Your lifelong English
+            <span className="text-primary"> vocabulary companion.</span>
           </h1>
 
           {/* Subheadline */}
