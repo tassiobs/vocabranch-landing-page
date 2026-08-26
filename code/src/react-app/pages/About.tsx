@@ -78,7 +78,7 @@ export default function About() {
                   practice. But I believe the right tools can make that process much more effective.
                 </p>
                 <p>
-                  For advanced learners, vocabulary is often the biggest challenge when trying to take their
+                  For intermediate and advanced learners, vocabulary is often the biggest challenge when trying to take their
                   English to the next level. You already understand most of what you hear and read. The
                   challenge is discovering those words and expressions you don't know yet — and, more
                   importantly, making them part of the English you can actually use.
