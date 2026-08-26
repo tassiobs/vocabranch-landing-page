@@ -11,6 +11,12 @@ export default function Nav() {
         </div>
         <div className="flex items-center gap-3">
           <Link
+            to="/about"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            About
+          </Link>
+          <Link
             to="/blog"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >

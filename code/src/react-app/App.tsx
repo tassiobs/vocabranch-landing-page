@@ -10,6 +10,7 @@ import AdminSignUp from "@/react-app/pages/admin/SignUp";
 import AdminPosts from "@/react-app/pages/admin/Posts";
 import PostEditor from "@/react-app/pages/admin/PostEditor";
 import PostPreview from "@/react-app/pages/admin/PostPreview";
+import AboutPage from "@/react-app/pages/About";
 import NotFound from "@/react-app/pages/NotFound";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/admin" element={<Navigate to="/admin/posts" replace />} />
