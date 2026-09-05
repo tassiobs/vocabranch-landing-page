@@ -76,7 +76,7 @@ export default function BlogPreview() {
               {thumb && (
                 <img
                   src={thumb}
-                  alt=""
+                  alt={post.title}
                   className="w-full h-40 object-cover"
                 />
               )}

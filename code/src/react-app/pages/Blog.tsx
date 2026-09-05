@@ -124,7 +124,7 @@ export default function Blog() {
                       <Link to={`/blog/${post.slug}`}>
                         <img
                           src={thumb}
-                          alt=""
+                          alt={post.title}
                           className="w-full h-56 object-cover rounded-xl mb-5 border border-border/40"
                         />
                       </Link>

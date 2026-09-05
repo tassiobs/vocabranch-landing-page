@@ -8,6 +8,7 @@ const API_URL = "https://vocabranch-blog-production.up.railway.app";
 
 const staticPages = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
+  { path: "/about", priority: "0.8", changefreq: "monthly" },
   { path: "/blog", priority: "0.9", changefreq: "daily" },
 ];
 

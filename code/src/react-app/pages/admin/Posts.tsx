@@ -157,7 +157,15 @@ export default function Posts() {
                       })}
                     </span>
                   </div>
-                  <h2 className="font-semibold truncate">{post.title}</h2>
+                  <h2 className="font-semibold truncate">
+                    <Link
+                      to={post.status === "published" ? `/blog/${post.slug}` : `/admin/posts/${post.id}/preview`}
+                      className="hover:text-primary transition-colors"
+                      target={post.status === "published" ? "_blank" : undefined}
+                    >
+                      {post.title}
+                    </Link>
+                  </h2>
                   <p className="text-sm text-muted-foreground mt-0.5 line-clamp-1">
                     {post.body.replace(/[#*`_~[\]]/g, "").slice(0, 120)}
                   </p>

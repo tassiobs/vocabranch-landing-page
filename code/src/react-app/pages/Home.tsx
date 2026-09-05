@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import Seo from "@/react-app/components/Seo";
 import Nav from "@/react-app/components/landing/Nav";
 import Hero from "@/react-app/components/landing/Hero";
@@ -31,6 +32,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Seo canonical="/" />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "VocaBranch",
+          "url": "https://vocabranch.com",
+          "logo": "https://vocabranch.com/logo.png",
+          "description": "The vocabulary app for serious English learners. AI-generated word trees, active practice, real-world context, and mastery tracking.",
+        })}</script>
+      </Helmet>
       <Nav />
       <div className="pt-14">
       <Hero />
