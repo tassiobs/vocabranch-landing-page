@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { marked } from "marked";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_URL = "https://vocabranch.com";
@@ -59,7 +60,11 @@ function injectPostMeta(html, post) {
     publisher: { "@type": "Organization", name: "VocaBranch", url: SITE_URL },
   });
 
-  const r = (name, prop, value) =>
+  // Render full article body from markdown to HTML
+  const bodyHtml = marked.parse(post.body);
+  const articleHtml = `<div data-prerender style="font-family:Georgia,'Times New Roman',serif;max-width:720px;margin:0 auto;padding:4rem 1.5rem;line-height:1.7;color:#1a1a1a"><h1 style="font-size:2rem;font-weight:700;margin-bottom:0.5rem">${post.title}</h1><p style="color:#666;font-size:0.875rem;margin-bottom:2rem">${new Date(post.created_at).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"})}</p>${bodyHtml}</div>`;
+
+  const r = (name, prop) =>
     new RegExp(`<meta ${prop}="${name}" content="[^"]*"\\s*/?>`, "g");
 
   return html
@@ -76,7 +81,8 @@ function injectPostMeta(html, post) {
     .replace(
       "</head>",
       `  <link rel="canonical" href="${urlEsc}">\n  <meta property="article:published_time" content="${post.created_at}">\n  <script type="application/ld+json">${jsonLd}</script>\n</head>`
-    );
+    )
+    .replace('<div id="root"></div>', `<div id="root">${articleHtml}</div>`);
 }
 
 async function prerender() {
