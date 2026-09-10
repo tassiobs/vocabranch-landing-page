@@ -75,7 +75,7 @@ export default function Blog() {
       </header>
 
       <main className="pt-14">
-        <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
           {/* Page header */}
           <div className="mb-12">
             <Button asChild variant="ghost" size="sm" className="-ml-2 mb-6 text-muted-foreground">
@@ -114,40 +114,70 @@ export default function Blog() {
             </div>
           )}
 
-          {!loading && posts.length > 0 && (
-            <div className="flex flex-col divide-y divide-border/60">
-              {posts.map((post) => {
-                const thumb = firstImage(post.body);
-                return (
-                  <article key={post.id} className="py-8 first:pt-0">
-                    {thumb && (
-                      <Link to={`/blog/${post.slug}`}>
-                        <img
-                          src={thumb}
-                          alt={post.title}
-                          className="w-full h-56 object-cover rounded-xl mb-5 border border-border/40"
-                        />
-                      </Link>
-                    )}
-                    <time className="text-sm text-muted-foreground">{formatDate(post.created_at)}</time>
-                    <h2
-                      className="text-xl font-semibold mt-1.5 mb-2 hover:text-primary transition-colors"
-                      style={{ fontFamily: '"Source Serif 4", serif' }}
-                    >
-                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                    </h2>
-                    <p className="text-muted-foreground leading-relaxed">{excerpt(post.body)}</p>
-                    <Link
-                      to={`/blog/${post.slug}`}
-                      className="inline-block mt-3 text-sm text-primary hover:underline font-medium"
-                    >
-                      Read more →
-                    </Link>
-                  </article>
-                );
-              })}
-            </div>
-          )}
+          {!loading && posts.length > 0 && (() => {
+            const [featured, ...rest] = posts;
+            const featuredThumb = firstImage(featured.body);
+            return (
+              <div className="space-y-12">
+                {/* Featured post */}
+                <Link to={`/blog/${featured.slug}`} className="group block">
+                  {featuredThumb && (
+                    <div className="w-full aspect-video overflow-hidden rounded-2xl mb-5 border border-border/40">
+                      <img
+                        src={featuredThumb}
+                        alt={featured.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
+                  <time className="text-sm text-muted-foreground">{formatDate(featured.created_at)}</time>
+                  <h2
+                    className="text-2xl md:text-3xl font-semibold mt-1.5 mb-2 group-hover:text-primary transition-colors"
+                    style={{ fontFamily: '"Source Serif 4", serif' }}
+                  >
+                    {featured.title}
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed">{excerpt(featured.body, 200)}</p>
+                  <span className="inline-block mt-3 text-sm text-primary font-medium group-hover:underline">
+                    Read more →
+                  </span>
+                </Link>
+
+                {/* Grid */}
+                {rest.length > 0 && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-border/60">
+                    {rest.map((post) => {
+                      const thumb = firstImage(post.body);
+                      return (
+                        <Link key={post.id} to={`/blog/${post.slug}`} className="group flex flex-col">
+                          {thumb && (
+                            <div className="w-full aspect-video overflow-hidden rounded-xl mb-4 border border-border/40">
+                              <img
+                                src={thumb}
+                                alt={post.title}
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                              />
+                            </div>
+                          )}
+                          <time className="text-sm text-muted-foreground">{formatDate(post.created_at)}</time>
+                          <h2
+                            className="text-lg font-semibold mt-1 mb-1.5 group-hover:text-primary transition-colors"
+                            style={{ fontFamily: '"Source Serif 4", serif' }}
+                          >
+                            {post.title}
+                          </h2>
+                          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{excerpt(post.body)}</p>
+                          <span className="inline-block mt-3 text-sm text-primary font-medium group-hover:underline">
+                            Read more →
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
         </div>
       </main>
     </div>
