@@ -23,8 +23,8 @@ export default function Hero() {
 
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1] mb-6" style={{ fontFamily: '"Source Serif 4", serif' }}>
-            Your lifelong English
-            <span className="text-primary"> vocabulary companion.</span>
+            The English vocabulary app
+            <span className="text-primary"> for serious learners</span>
           </h1>
 
           {/* Subheadline */}
