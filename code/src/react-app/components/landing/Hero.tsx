@@ -29,9 +29,7 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10">
-            The vocabulary app for serious learners who've outgrown Duolingo.
-            AI-generated word trees, active practice, real-world context —
-            and actual mastery tracking.
+            Don't just know words. Use them. A hands-on app that turns the vocabulary you know into English you actually speak.
           </p>
 
           <Button asChild size="lg" className="h-12 px-8 bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
