@@ -4,7 +4,7 @@ import { MessageSquare } from "lucide-react";
 const examples = [
   "Quiz me on the words I added this week",
   "Write a short story using my most-reviewed words",
-  "Which words am I still struggling with?",
+  "Add 'resilient', 'tenacious', and 'grit' to my Business English folder",
 ];
 
 export default function AiConnect() {
