@@ -55,7 +55,7 @@ export const blogApi = {
 
   signout: () => request<void>("/auth/signout", { method: "POST" }),
 
-  getPublished: () => request<Post[]>("/posts"),
+  getPublished: () => request<Post[]>("/posts?source=vocabranch"),
   getAll: () => request<Post[]>("/posts/all"),
   getPost: (id: number) => request<Post>(`/posts/${id}`),
   getPostBySlug: (slug: string) => request<Post>(`/posts/by-slug/${slug}`),
@@ -63,7 +63,7 @@ export const blogApi = {
   createPost: (title: string, body: string, slug?: string) =>
     request<Post>("/posts", {
       method: "POST",
-      body: JSON.stringify({ title, body, ...(slug ? { slug } : {}) }),
+      body: JSON.stringify({ title, body, source: "vocabranch", ...(slug ? { slug } : {}) }),
     }),
 
   updatePost: (id: number, data: { title?: string; body?: string; slug?: string }) =>
